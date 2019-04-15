@@ -1,14 +1,30 @@
 const express = require("express");
-
+const path = require("path");
 const app = express();
+const axios = require("axios");
 
-// returns a simple respnse
+app.set("view engine", "pug");
+app.set("views", path.join(__dirname, "views"));
+
 app.get("/", (req, res) => {
-  console.log(`received request: ${req.method} ${req.url}`);
-  res.status(200).send("Hello world!!");
+  res.render("home", { result: { data: null } });
 });
 
-// starts an http server on the $PORT environment variable
+const BACKEND_URI = "http://backend-service:3030/backend";
+
+app.post("/fetchdata", (req, res) => {
+  axios
+    .get(BACKEND_URI)
+    .then(response => {
+      console.log(`response from ${BACKEND_URI}: ` + response.status);
+      const result = response.payload;
+      res.render("home", { result });
+    })
+    .catch(error => {
+      console.error("error: " + error);
+    });
+});
+
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);

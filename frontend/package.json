@@ -9,9 +9,11 @@
   },
   "license": "0BSD",
   "dependencies": {
+    "axios": "^0.18.0",
     "express": "^4.16.4"
   },
   "devDependencies": {
-    "eslint": "^5.15.3"
+    "eslint": "^5.15.3",
+    "pug": "^2.0.3"
   }
 }

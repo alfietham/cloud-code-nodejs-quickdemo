@@ -2,10 +2,14 @@ const express = require("express");
 
 const app = express();
 
-// returns a simple respnse
+// returns a random number with some text in JSON
 app.get("/backend", (req, res) => {
   console.log(`received request: ${req.method} ${req.url}`);
-  res.status(200).send("Here's some data from the backend...");
+  const randomFloat = Math.random() * 10000;
+  const randomInt = Math.ceil(randomFloat);
+  res.status(200).json({
+    data: `Here's some random number: ${randomInt}`
+  });
 });
 
 // starts an http server on the $PORT environment variable
