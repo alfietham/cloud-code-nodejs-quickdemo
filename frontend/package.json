@@ -1,0 +1,17 @@
+{
+  "name": "demo-cloud-code-frontend",
+  "version": "0.0.1",
+  "description": "Demo app for Cloud Code and Kubernetes",
+  "main": "app.js",
+  "scripts": {
+    "start": "node --inspect=9229 src/app.js ",
+    "lint": "eslint '**/**.js'"
+  },
+  "license": "0BSD",
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "eslint": "^5.15.3"
+  }
+}
